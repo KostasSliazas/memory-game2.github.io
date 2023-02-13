@@ -1,5 +1,5 @@
 ;
-(function (d) {
+(function (w,d) {
   'use strict'
   const arr = ['a','b','c','d','e','f','g','j','k','l']
   let shufleCards = getShuffledArr(arr.concat(arr))
@@ -82,8 +82,12 @@
             if (gridContainer.getElementsByClassName('blur').length === shufleCards.length) {
               clearInterval(on)
               message.innerHTML = `<p>YOU WON!</p><p>your time: ${timers.textContent}</p>`
+              for(let i = 0; i<w.localStorage.length; i++){
+                message.innerHTML += `<p class="time">${w.localStorage.getItem(w.localStorage.key(i))}</p>`
+              }
               gridContainer.innerHTML = ''
               button('Play again')
+              w.localStorage.setItem(`time${w.localStorage.length + 1}`, timers.textContent)
               message.style.display = 'block'
             }
           }, 300)
@@ -114,7 +118,7 @@
       message.style.display = 'none'
       timers.classList.remove('hidden')
     }
-    message.appendChild(btn)
+    message.prepend(btn)
   }
 
   function init () {
@@ -122,4 +126,4 @@
   }
 
   init()
-})(document)
+})(window, document)

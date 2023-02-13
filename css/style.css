@@ -112,6 +112,7 @@ h1 {
 }
 
 .time {
+    margin:0;
     font-size: .75em
 }
 
@@ -129,7 +130,9 @@ h1 {
     border-radius: 10px;
     width: 100%;
     max-width: 300px;
-    border: 10px solid #fff
+    border: 10px solid #fff;
+    overflow: scroll;
+    max-height: 300px;
 }
 
 .message p {
